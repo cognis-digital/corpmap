@@ -36,3 +36,4 @@
 2025-11-20T16:22:02  docs: here be dragons
 2025-12-22T11:39:09  feat: with great power comes great test coverage
 2026-04-20T18:56:16  chore: one does not simply skip CI
+2024-06-15T08:52:32  refactor(scoring): respect .gitignore when walking
