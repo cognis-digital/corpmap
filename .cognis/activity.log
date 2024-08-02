@@ -39,3 +39,4 @@
 2024-06-15T08:52:32  refactor(scoring): respect .gitignore when walking
 2024-06-24T15:09:39  build(output): bump the dev toolchain
 2024-07-22T10:26:46  feat(ci): handle empty and malformed input
+2024-08-02T17:43:53  refactor(core): memoize repeated lookups
