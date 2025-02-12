@@ -49,3 +49,4 @@
 2024-12-07T18:42:42  build(scan): add a dry-run flag
 2025-01-04T13:59:49  fix: the cake is a lie, but the bug was real
 2025-01-14T08:16:56  refactor(output): cover the multiline case
+2025-02-12T15:33:03  build(cache): reduce false positives on edge cases
