@@ -52,3 +52,4 @@
 2025-02-12T15:33:03  build(cache): reduce false positives on edge cases
 2025-02-22T10:50:10  feat(core): respect .gitignore when walking
 2025-03-05T17:07:17  docs: expand examples
+2025-04-02T12:24:24  perf(mcp): handle empty and malformed input
