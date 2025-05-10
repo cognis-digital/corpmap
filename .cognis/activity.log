@@ -54,3 +54,4 @@
 2025-03-05T17:07:17  docs: expand examples
 2025-04-02T12:24:24  perf(mcp): handle empty and malformed input
 2025-04-12T19:41:31  style(format): add --fail-on threshold handling
+2025-05-10T14:58:38  chore: tune defaults
