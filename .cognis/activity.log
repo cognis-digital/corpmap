@@ -55,3 +55,4 @@
 2025-04-02T12:24:24  perf(mcp): handle empty and malformed input
 2025-04-12T19:41:31  style(format): add --fail-on threshold handling
 2025-05-10T14:58:38  chore: tune defaults
+2025-05-20T09:15:45  chore(tests): make timestamps timezone-aware
