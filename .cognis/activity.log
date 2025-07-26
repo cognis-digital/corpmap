@@ -58,3 +58,4 @@
 2025-05-20T09:15:45  chore(tests): make timestamps timezone-aware
 2025-06-18T16:32:52  docs(docs): normalize unicode before matching
 2025-06-28T11:49:59  ci(rules): handle CRLF line endings
+2025-07-26T18:06:06  docs: ELI5 pass
