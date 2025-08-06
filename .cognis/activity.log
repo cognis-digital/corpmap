@@ -59,3 +59,4 @@
 2025-06-18T16:32:52  docs(docs): normalize unicode before matching
 2025-06-28T11:49:59  ci(rules): handle CRLF line endings
 2025-07-26T18:06:06  docs: ELI5 pass
+2025-08-06T13:23:13  feat(output): add a fast path for the common case
