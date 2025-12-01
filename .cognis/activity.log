@@ -65,3 +65,4 @@
 2025-09-24T10:14:34  feat(deps): cover the multiline case
 2025-10-22T17:31:41  fix(mcp): add pagination to large reports
 2025-11-02T12:48:48  chore(format): add type hints to the public API
+2025-11-30T19:05:55  perf: speed. I am speed.
