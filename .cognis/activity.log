@@ -67,3 +67,4 @@
 2025-11-02T12:48:48  chore(format): add type hints to the public API
 2025-11-30T19:05:55  perf: speed. I am speed.
 2025-12-11T14:22:02  ci(tests): clarify the README quickstart
+2026-01-08T09:39:09  chore(fixtures): add --fail-on threshold handling
