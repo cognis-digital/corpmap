@@ -70,3 +70,4 @@
 2026-01-08T09:39:09  chore(fixtures): add --fail-on threshold handling
 2026-01-18T16:56:16  docs(rules): guard against ReDoS in patterns
 2026-01-29T11:13:23  chore: bump dev tooling
+2026-02-26T18:30:30  build(detect): normalize unicode before matching
