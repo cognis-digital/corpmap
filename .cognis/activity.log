@@ -71,3 +71,4 @@
 2026-01-18T16:56:16  docs(rules): guard against ReDoS in patterns
 2026-01-29T11:13:23  chore: bump dev tooling
 2026-02-26T18:30:30  build(detect): normalize unicode before matching
+2026-03-08T13:47:37  feat(cache): add a JSON schema for output
