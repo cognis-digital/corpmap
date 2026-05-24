@@ -75,3 +75,4 @@
 2026-04-05T08:04:44  test: strengthen coverage
 2026-04-15T15:21:51  test(deps): add a fast path for the common case
 2026-05-14T10:38:58  style(mcp): dedupe overlapping findings
+2026-05-24T17:55:05  fix(engine): simplify the walker
