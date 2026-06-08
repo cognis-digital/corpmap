@@ -1,30 +1,11 @@
-"""CORPMAP — Corporate structure & beneficial-ownership mapper.
-
-Parses a flat entity/relationship dataset describing corporate ownership and
-resolves the effective (look-through) beneficial ownership of any entity,
-detects circular holdings, and flags control / disclosure thresholds.
-
-Standard library only. Zero install.
-"""
-from .core import (
-    Entity,
-    OwnershipEdge,
-    OwnershipGraph,
-    BeneficialOwner,
-    load_dataset,
-    parse_dataset,
-)
-
-TOOL_NAME = "corpmap"
-TOOL_VERSION = "1.0.0"
-
-__all__ = [
-    "Entity",
-    "OwnershipEdge",
-    "OwnershipGraph",
-    "BeneficialOwner",
-    "load_dataset",
-    "parse_dataset",
-    "TOOL_NAME",
-    "TOOL_VERSION",
-]
+"""corpmap — part of the Cognis Neural Suite."""
+try:  # re-export the tool's public API + identity from core
+    from corpmap.core import *  # noqa: F401,F403
+except Exception:  # pragma: no cover
+    pass
+try:
+    from corpmap.core import TOOL_NAME, TOOL_VERSION
+except Exception:  # pragma: no cover
+    TOOL_NAME = "corpmap"
+    TOOL_VERSION = "0.1.0"
+__version__ = TOOL_VERSION
