@@ -1,0 +1,20 @@
+{
+  "entities": [
+    {"id": "JANE",    "name": "Jane Okafor",            "type": "person",  "jurisdiction": "GB"},
+    {"id": "RAVI",    "name": "Ravi Menon",             "type": "person",  "jurisdiction": "SG"},
+    {"id": "TRUSTX",  "name": "Meridian Family Trust",  "type": "trust",   "jurisdiction": "JE"},
+    {"id": "HOLDCO",  "name": "Northgate Holdings BV",  "type": "company", "jurisdiction": "NL"},
+    {"id": "MIDCO",   "name": "Northgate Capital Sarl", "type": "company", "jurisdiction": "LU"},
+    {"id": "OPCO",    "name": "Acme Robotics Inc",      "type": "company", "jurisdiction": "US"},
+    {"id": "MINOR",   "name": "Bluewater Ventures LP",  "type": "fund",    "jurisdiction": "KY"}
+  ],
+  "ownership": [
+    {"owner": "JANE",   "owned": "TRUSTX", "pct": 100.0},
+    {"owner": "TRUSTX", "owned": "HOLDCO", "pct": 80.0},
+    {"owner": "RAVI",   "owned": "HOLDCO", "pct": 20.0},
+    {"owner": "HOLDCO", "owned": "MIDCO",  "pct": 90.0},
+    {"owner": "RAVI",   "owned": "MIDCO",  "pct": 10.0},
+    {"owner": "MIDCO",  "owned": "OPCO",   "pct": 75.0},
+    {"owner": "MINOR",  "owned": "OPCO",   "pct": 25.0}
+  ]
+}
