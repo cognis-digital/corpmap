@@ -118,7 +118,17 @@ Pipes into your stack: **SARIF** for code-scanning, **JSON** for anything, an **
 <div align="right"><a href="#top">↑ back to top</a></div>
 
 <a name="install-anywhere"></a>
-## Install anywhere
+## Install — every way, every platform
+
+```bash
+pip install "git+https://github.com/cognis-digital/corpmap.git"    # pip (works today)
+pipx install "git+https://github.com/cognis-digital/corpmap.git"   # isolated CLI
+uv tool install "git+https://github.com/cognis-digital/corpmap.git" # uv
+pip install cognis-corpmap                                          # PyPI (when published)
+docker run --rm ghcr.io/cognis-digital/corpmap:latest --help        # Docker
+brew install cognis-digital/tap/corpmap                             # Homebrew tap
+curl -fsSL https://raw.githubusercontent.com/cognis-digital/corpmap/main/install.sh | sh
+```
 
 | Linux | macOS | Windows | Docker | Cloud |
 |---|---|---|---|---|
