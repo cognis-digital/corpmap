@@ -36,7 +36,8 @@ Corporate structure & beneficial-ownership mapper — without standing up heavyw
 <a name="features"></a>
 ## Features
 
-- ✅ Scan
+- ✅ Parse Dataset
+- ✅ Load Dataset
 - ✅ Runs on Linux/macOS/Windows · Docker · devcontainer
 - ✅ Ports in Python, JavaScript, Go, and Rust (`ports/`)
 
