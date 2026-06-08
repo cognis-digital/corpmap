@@ -1,0 +1,10 @@
+{
+  "name": "@cognis/corpmap",
+  "version": "0.2.0",
+  "description": "JavaScript port of corpmap (Cognis Neural Suite)",
+  "bin": {
+    "corpmap": "index.js"
+  },
+  "license": "LicenseRef-COCL-1.0",
+  "type": "module"
+}
