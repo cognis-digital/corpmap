@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: corpmap, labels: { app: corpmap } }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: corpmap } }
+  template:
+    metadata: { labels: { app: corpmap } }
+    spec:
+      containers:
+        - name: corpmap
+          image: ghcr.io/cognis-digital/corpmap:latest
+          ports: [{ containerPort: 8000 }]
+          resources:
+            requests: { cpu: "50m", memory: "64Mi" }
+            limits: { cpu: "500m", memory: "256Mi" }
+---
+apiVersion: v1
+kind: Service
+metadata: { name: corpmap }
+spec:
+  selector: { app: corpmap }
+  ports: [{ port: 80, targetPort: 8000 }]
