@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Acme Tech Holdings BVI",
+    "sanctioned_owner": true,
+    "pep": false,
+    "shell_score": "9",
+    "jurisdiction": "British Virgin Islands",
+    "beneficial_owner": "UNKNOWN"
+  },
+  {
+    "name": "Acme Sub LLC",
+    "sanctioned_owner": false,
+    "pep": false,
+    "shell_score": "6",
+    "parent": "Acme Tech Holdings BVI",
+    "jurisdiction": "Delaware"
+  }
+]

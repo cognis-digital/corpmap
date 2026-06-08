@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Acme Holdings BVI",
+    "sanctioned_owner": true,
+    "pep": false,
+    "shell_score": "8"
+  },
+  {
+    "name": "Real Co LLC",
+    "sanctioned_owner": false,
+    "pep": true,
+    "shell_score": "2"
+  }
+]
