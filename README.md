@@ -16,7 +16,7 @@
 </div>
 
 ```bash
-pip install cognis-corpmap
+pip install "git+https://github.com/cognis-digital/corpmap.git"
 corpmap scan .            # → prioritized findings in seconds
 ```
 
@@ -47,7 +47,7 @@ Corporate structure & beneficial-ownership mapper — without standing up heavyw
 ## Quick start
 
 ```bash
-pip install cognis-corpmap
+pip install "git+https://github.com/cognis-digital/corpmap.git"
 corpmap --version
 corpmap scan .                       # scan current project
 corpmap scan . --format json         # machine-readable

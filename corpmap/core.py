@@ -30,7 +30,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Tuple
 
 # Regulatory-ish thresholds (configurable by callers if desired).
 DISCLOSURE_THRESHOLD = 5.0   # typical SEC 13D/G beneficial-ownership flag
