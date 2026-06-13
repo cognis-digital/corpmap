@@ -20,6 +20,40 @@ pip install cognis-corpmap
 corpmap scan .            # → prioritized findings in seconds
 ```
 
+## Usage — step by step
+
+1. Install the CLI (Python 3.9+):
+
+   ```bash
+   pip install corpmap        # or: pip install .   from a checkout
+   ```
+
+2. Resolve beneficial owners — the `owners` subcommand walks an ownership dataset (JSON) and computes effective ownership through intermediate layers:
+
+   ```bash
+   corpmap owners ownership.json ACME_HOLDINGS --min-pct 25 --persons-only
+   ```
+
+3. Inspect a single entity's direct owners, or detect circular cross-holdings:
+
+   ```bash
+   corpmap entity ownership.json ACME_HOLDINGS
+   corpmap cycles ownership.json
+   ```
+
+4. Read results programmatically with the global `--format json` flag (it precedes the subcommand):
+
+   ```bash
+   corpmap --format json owners ownership.json ACME_HOLDINGS --min-pct 25 | jq '.beneficial_owners[] | {name, effective_pct}'
+   ```
+
+5. Use it in due-diligence automation — flag opaque structures by checking for cross-holding cycles in CI:
+
+   ```bash
+   corpmap --format json cycles ownership.json | jq -e '.cycle_count == 0'
+   ```
+
+
 ## Contents
 
 - [Why corpmap?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
