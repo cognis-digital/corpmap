@@ -20,6 +20,12 @@ pip install "git+https://github.com/cognis-digital/corpmap.git"
 corpmap scan .            # → prioritized findings in seconds
 ```
 
+<!-- cognis:layman:start -->
+## What is this?
+
+Corpmap is a command-line tool that maps out who actually owns a company — cutting through layers of holding companies, trusts, and funds to find the real people in control. You give it a dataset of ownership records and it tells you, for example, that behind a shell company in the Netherlands sits a trust in Jersey, ultimately controlled by one individual owning 54% of the underlying business. It's useful for due diligence, compliance checks, and anyone who needs to understand beneficial ownership without paying for a commercial database service.
+<!-- cognis:layman:end -->
+
 ## Contents
 
 - [Why corpmap?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
@@ -44,6 +50,42 @@ Corporate structure & beneficial-ownership mapper — without standing up heavyw
 <div align="right"><a href="#top">↑ back to top</a></div>
 
 <a name="quick-start"></a>
+<!-- cognis:install:start -->
+## Install
+
+`corpmap` is source-available (not published to PyPI) — every method below installs
+straight from GitHub. Pick whichever you prefer; the one-line scripts auto-detect
+the best tool available on your machine.
+
+**One-liner (Linux / macOS):**
+```sh
+curl -fsSL https://raw.githubusercontent.com/cognis-digital/corpmap/HEAD/install.sh | sh
+```
+
+**One-liner (Windows PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/cognis-digital/corpmap/HEAD/install.ps1 | iex
+```
+
+**Or install manually — any one of:**
+```sh
+pipx install "git+https://github.com/cognis-digital/corpmap.git"     # isolated (recommended)
+uv tool install "git+https://github.com/cognis-digital/corpmap.git"  # uv
+pip install "git+https://github.com/cognis-digital/corpmap.git"      # pip
+```
+
+**From source:**
+```sh
+git clone https://github.com/cognis-digital/corpmap.git
+cd corpmap && pip install .
+```
+
+Then run:
+```sh
+corpmap --help
+```
+<!-- cognis:install:end -->
+
 ## Quick start
 
 ```bash
