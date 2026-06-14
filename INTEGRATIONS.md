@@ -14,9 +14,9 @@ Once `corpmap` emits JSON findings, pipe them straight to a destination — `--d
 previews the exact request without sending:
 
 ```bash
-corpmap ... --format json | cognis-connect emit --to misp   # MISP event --url $URL --token $TOK
-corpmap ... --format json | cognis-connect emit --to webhook   # generic webhook --url $URL --token $TOK
-corpmap ... --format json | cognis-connect emit --to slack   # Slack --url $URL --token $TOK
+corpmap ... --format json | cognis-connect emit --to misp --url $URL --token $TOK   # MISP event
+corpmap ... --format json | cognis-connect emit --to webhook --url $URL --token $TOK   # generic webhook
+corpmap ... --format json | cognis-connect emit --to slack --url $URL --token $TOK   # Slack
 ```
 
 Recommended for this domain: **misp, webhook, slack**. The full set is
