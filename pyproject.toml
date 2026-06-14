@@ -36,3 +36,6 @@ corpmap = "corpmap.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["corpmap"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
