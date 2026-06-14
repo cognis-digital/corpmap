@@ -15,12 +15,15 @@ def _print_json(obj) -> None:
 
 
 def _print_table(rows: List[List[str]], headers: List[str]) -> None:
-    cols = list(zip(*([headers] + rows))) if rows else [[h] for h in headers]
+    n = len(headers)
+    # Pad any short rows so column-width calculation never raises IndexError.
+    padded = [list(r) + [""] * (n - len(r)) if len(r) < n else r[:n] for r in rows]
+    cols = list(zip(*([headers] + padded))) if padded else [[h] for h in headers]
     widths = [max(len(str(c)) for c in col) for col in cols]
     line = "  ".join(str(h).ljust(widths[i]) for i, h in enumerate(headers))
     print(line)
-    print("  ".join("-" * widths[i] for i in range(len(headers))))
-    for row in rows:
+    print("  ".join("-" * widths[i] for i in range(n)))
+    for row in padded:
         print("  ".join(str(c).ljust(widths[i]) for i, c in enumerate(row)))
 
 
@@ -125,12 +128,27 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: Optional[List[str]] = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
+    # Validate --min-pct before loading data so the error is reported early.
+    if hasattr(args, "min_pct"):
+        if args.min_pct < 0.0 or args.min_pct > 100.0:
+            print(
+                f"corpmap: error: --min-pct must be between 0 and 100,"
+                f" got {args.min_pct}",
+                file=sys.stderr,
+            )
+            return 2
     try:
         graph = load_dataset(args.dataset)
         return args.func(graph, args)
     except CorpmapError as exc:
         print(f"corpmap: error: {exc}", file=sys.stderr)
         return 2
+    except KeyboardInterrupt:
+        print("corpmap: interrupted", file=sys.stderr)
+        return 130
+    except Exception as exc:  # noqa: BLE001
+        print(f"corpmap: unexpected error: {exc}", file=sys.stderr)
+        return 1
 
 
 if __name__ == "__main__":

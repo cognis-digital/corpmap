@@ -181,8 +181,13 @@ class OwnershipGraph:
         self.get_entity(target)
         accumulated: Dict[str, float] = {}
         direct_ids = {owner for owner, _ in self._owners_of.get(target, [])}
+        _MAX_DEPTH = 500  # guard against stack overflow on pathological datasets
 
-        def walk(node: str, frac: float, path: frozenset):
+        def walk(node: str, frac: float, path: frozenset, depth: int = 0):
+            if depth > _MAX_DEPTH:
+                # Treat over-deep paths as terminal; attribute to the current node.
+                accumulated[node] = accumulated.get(node, 0.0) + frac
+                return
             owners = self._owners_of.get(node, [])
             if not owners:
                 # `node` is a terminal owner (no further owners on record).
@@ -204,7 +209,7 @@ class OwnershipGraph:
                 # Intermediate entity: also record its aggregate stake, then
                 # continue looking through to find ultimate owners.
                 accumulated[owner] = accumulated.get(owner, 0.0) + contribution
-                walk(owner, contribution, path | {owner})
+                walk(owner, contribution, path | {owner}, depth + 1)
 
         walk(target, 1.0, frozenset({target}))
 
@@ -250,18 +255,25 @@ def parse_dataset(data: dict) -> OwnershipGraph:
     entities: List[Entity] = []
     seen = set()
     for i, raw in enumerate(raw_entities):
-        if not isinstance(raw, dict) or "id" not in raw:
+        if not isinstance(raw, dict):
+            raise CorpmapError(f"entities[{i}] must be an object")
+        if "id" not in raw:
             raise CorpmapError(f"entities[{i}] missing required field 'id'")
-        eid = str(raw["id"])
+        raw_id = raw["id"]
+        if raw_id is None or str(raw_id).strip() == "":
+            raise CorpmapError(f"entities[{i}].id must not be null or empty")
+        eid = str(raw_id).strip()
         if eid in seen:
             raise CorpmapError(f"duplicate entity id: {eid!r}")
         seen.add(eid)
+        raw_name = raw.get("name", eid)
+        name = str(raw_name) if raw_name is not None else eid
         entities.append(
             Entity(
                 id=eid,
-                name=str(raw.get("name", eid)),
-                type=str(raw.get("type", "company")),
-                jurisdiction=str(raw.get("jurisdiction", "")),
+                name=name,
+                type=str(raw.get("type") or "company"),
+                jurisdiction=str(raw.get("jurisdiction") or ""),
             )
         )
 
@@ -284,11 +296,21 @@ def parse_dataset(data: dict) -> OwnershipGraph:
 
 
 def load_dataset(path: str) -> OwnershipGraph:
+    if not path or not path.strip():
+        raise CorpmapError("dataset path must not be empty")
     try:
         with open(path, "r", encoding="utf-8") as fh:
             data = json.load(fh)
     except FileNotFoundError:
         raise CorpmapError(f"dataset file not found: {path}")
+    except PermissionError:
+        raise CorpmapError(f"permission denied reading dataset: {path}")
+    except IsADirectoryError:
+        raise CorpmapError(f"dataset path is a directory, not a file: {path}")
+    except OSError as exc:
+        raise CorpmapError(f"could not read dataset {path}: {exc}")
     except json.JSONDecodeError as exc:
         raise CorpmapError(f"invalid JSON in {path}: {exc}")
+    except UnicodeDecodeError as exc:
+        raise CorpmapError(f"dataset file is not valid UTF-8: {path}: {exc}")
     return parse_dataset(data)
