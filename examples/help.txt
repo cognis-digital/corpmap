@@ -1,0 +1,18 @@
+$ corpmap-emit --help
+
+usage: corpmap [-h] [--version] [--format {table,json}]
+               {owners,cycles,entity} ...
+
+Corporate structure & beneficial-ownership mapper.
+
+positional arguments:
+  {owners,cycles,entity}
+    owners              resolve beneficial owners of an entity
+    cycles              detect circular cross-holdings
+    entity              show an entity and its direct owners
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  --format {table,json}
+                        output format (default: table)

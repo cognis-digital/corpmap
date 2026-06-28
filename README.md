@@ -20,6 +20,66 @@ pip install cognis-corpmap
 corpmap scan .            # → prioritized findings in seconds
 ```
 
+
+<!-- cognis:example:start -->
+## 🔎 Example output
+
+Real, reproducible output from the tool — runs offline:
+
+```console
+$ corpmap-emit --version
+corpmap 0.1.0
+```
+
+```console
+$ corpmap-emit --help
+usage: corpmap [-h] [--version] [--format {table,json}]
+               {owners,cycles,entity} ...
+
+Corporate structure & beneficial-ownership mapper.
+
+positional arguments:
+  {owners,cycles,entity}
+    owners              resolve beneficial owners of an entity
+    cycles              detect circular cross-holdings
+    entity              show an entity and its direct owners
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  --format {table,json}
+                        output format (default: table)
+```
+
+> Blocks above are real `corpmap` output — reproduce them from a clone.
+
+**Sample result format** _(illustrative values — run on your own data for real findings):_
+
+```
+{
+"corpmap": {
+"platform": "stix",
+"data": [
+{
+"id": "1234567890",
+"name": "Suspicious Activity",
+"description": "Anomalous network traffic detected",
+"created_by": "John Doe",
+"created_at": "2023-02-15T14:30:00Z"
+},
+{
+"id": "2345678901",
+"name": "Malware Detection",
+"description": "Virus found on system",
+"created_by": "Jane Smith",
+"created_at": "2023-02-16T10:45:00Z"
+}
+]
+}
+```
+
+<!-- cognis:example:end -->
+
 ## Usage — step by step
 
 1. Install the CLI (Python 3.9+):

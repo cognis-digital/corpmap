@@ -1,0 +1,3 @@
+$ corpmap-emit --version
+
+corpmap 0.1.0
